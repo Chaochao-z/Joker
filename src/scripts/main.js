@@ -1,3 +1,7 @@
 import '../css/style.scss'
 
-// Script goes here
+import Deck from "./store";
+
+const deck = new Deck({
+    jokers_enabled: false,
+})

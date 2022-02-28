@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pragati+Narrow:wght@400;700&display=swap');
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -7,5 +9,40 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #f5f5f5;
+  font-family: 'Pragati Narrow', sans-serif;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  //overflow: hidden;
+}
+
+.app {
+  &__header {
+    &__title {
+      font-family: 'Lobster', cursive;
+      font-size: 3rem;
+    }
+  }
+}
+
+.app__background {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -99;
+  background: {
+    image: url("src/assets/bg.jpg");
+    repeat: repeat;
+    position: center;
+    size: contain;
+  }
 }
