@@ -14,34 +14,41 @@ class FetchRequest {
         this.timeout = timeout;
         this.timeoutCallback = () => {
             this.controller.abort();
-            this.requestEnd();
+            this.#requestEnd();
             timeoutCallback();
         };
     }
 
     async fetch() {
-        this.requestStart();
+        this.#requestStart();
         try {
             const res = await fetch(this.url, {
                 ...this.options,
                 signal: this.controller.signal
             });
-            this.requestEnd();
+            this.#requestEnd();
             return res;
         } catch (e) {
-            this.requestEnd();
+            this.#requestEnd();
             throw new Error(e);
         }
     }
 
-    requestStart() {
+    #requestStart() {
         this.requesting = true;
         this.timeoutFunction = setTimeout(this.timeoutCallback, this.timeout);
     }
 
-    requestEnd() {
+    #requestEnd() {
         this.requesting = false;
         clearTimeout(this.timeoutFunction)
+    }
+
+    cancel() {
+        if (this.requesting) {
+            this.controller.abort();
+            this.#requestEnd();
+        }
     }
 }
 
