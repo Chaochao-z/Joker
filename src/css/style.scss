@@ -21,11 +21,22 @@ body {
 }
 
 .app {
+  display: grid;
+  grid-template-areas:'. header .' '. main .';
+  grid-auto-columns: 100px 1fr 100px;
+  grid-template-rows: auto;
+
   &__header {
+    grid-area: header;
+
     &__title {
       font-family: 'Lobster', cursive;
       font-size: 3rem;
     }
+  }
+
+  &__main {
+    grid-area: main;
   }
 }
 
@@ -44,5 +55,8 @@ body {
     repeat: repeat;
     position: center;
     size: contain;
+  }
+  &__symbols {
+    max-width: 50vw;
   }
 }

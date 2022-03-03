@@ -4,30 +4,8 @@ const states = {
     deck: [], playerHand: [],
 }
 
-async function advancedFetch(url, options) {
-    const controller = new AbortController();
-    const { signal } = controller;
-    const timeout = setTimeout(() => {
-        // propose to cancel
-    }, 5000);
-    try {
-        const res = await fetch(url, {
-            ...options,
-            signal
-        });
-    } catch (e) {
-        clearTimeout(timeout);
-        throw new Error(e);
-    }
-}
-
-function objectToQueryString(object) {
-    if (typeof object !== 'object') return '';
-    if (object.length < 1) return '';
-    const paramsArray = Object.keys(object).map((key) => `${key}=${object[key]}`);
-    const queryString = paramsArray.join('&');
-    return `?${queryString}`
-}
+import FetchRequest from "./utils/fetchRequest";
+import {objectToQueryString} from "./utils/conversions";
 
 class Deck {
     deck = {};
@@ -49,9 +27,12 @@ class Deck {
 
     async generateDeck(params) {
         const queryParams = objectToQueryString(params);
-        const res = await fetch(`${API_URL}/deck/new/${queryParams}`);
+        const req = new FetchRequest(`${API_URL}/deck/new/${queryParams}`, {}, 1000, () => {
+            console.log('request timed out!')
+        })
+        const res = await req.fetch();
         return await res.json();
     }
 }
 
-export default Deck;
+export {Deck};

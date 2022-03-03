@@ -11,11 +11,25 @@
       <header class="app__header">
         <span class="app__header__title">Joker 21</span>
       </header>
-      <img src="src/assets/Card_back.svg" alt="">
+      <main class="app__main">
+        <div class="game">
+          <div class="game__deck">
+            <img src="src/assets/Card_back.svg" alt="">
+          </div>
+          <div class="game__pile">
+            <div class="game__pile__area"></div>
+          </div>
+          <div class="game__control">
+            <button>Draw</button>
+            <button>Stop</button>
+          </div>
+        </div>
+      </main>
+
 
 
       <div class="app__background">
-        <img src="src/assets/symbols.png" alt="">
+        <img src="src/assets/symbols.png" alt="symbols" class="app__background__symbols">
       </div>
     </div>
     <script type="module" src="/src/scripts/main.js"></script>
