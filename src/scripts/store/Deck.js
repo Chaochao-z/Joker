@@ -1,11 +1,6 @@
-const API_URL = 'https://deckofcardsapi.com/api'
-
-const states = {
-    deck: [], playerHand: [],
-}
-
-import FetchRequest from "./utils/fetchRequest";
-import {objectToQueryString} from "./utils/conversions";
+import FetchRequest from "../utils/fetchRequest";
+import {objectToQueryString} from "../utils/conversions";
+import {store, API_URL} from "./store";
 
 class Deck {
     deck = {};
@@ -33,6 +28,10 @@ class Deck {
         const res = await req.fetch();
         return await res.json();
     }
+
+    getDeck() {
+        return this.deck;
+    }
 }
 
-export {Deck};
+export default Deck;
