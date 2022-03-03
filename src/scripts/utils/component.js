@@ -1,6 +1,6 @@
 import {generateRandId} from "./generators";
 
-function aComponent(componentFile) {
+function aComponent(componentFile, element) {
     const component = {
         id: generateRandId(),
         component() {
@@ -31,7 +31,7 @@ function aComponent(componentFile) {
             const el = document.createElement('div');
             el.id = this.id;
             el.innerHTML = componentFile.render();
-            document.getElementById('app').appendChild(el);
+            element.appendChild(el);
             this.mounted();
         },
         mounted() {

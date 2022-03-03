@@ -1,23 +1,16 @@
 export default {
     render() {
         return `
-            <hr>
-            <button id="counterBtn">+1</button>
-            <span s-bind="count"></span><br>
-            <input type="text" id="input">
-            <p s-bind="text"></p>
+            <button id="draw">DRAW</button>
         `;
     },
     data: {
-        count: 0,
-        text: 'Yes we can',
+        cardCount: 0,
     },
     mounted(data) {
-        document.getElementById("counterBtn").addEventListener('click', () => {
-            data.count++;
-        })
-        document.getElementById('input').addEventListener('input', (e) =>{
-            data.text = e.target.value;
+        document.getElementById("draw").addEventListener('click', () => {
+            console.log('DRAW A CARD')
+            data.cardCount++;
         })
     }
 }

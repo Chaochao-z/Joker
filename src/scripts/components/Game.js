@@ -1,7 +1,5 @@
 import {store} from "../store/store";
 
-import Draw from "./Draw";
-
 export default {
     render() {
         return `
