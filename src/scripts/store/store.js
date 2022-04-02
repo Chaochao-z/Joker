@@ -7,12 +7,7 @@ const states = {
     deck: {},
     card: {},
     remainingCards: null,
-    pile: [{
-        test: 'x',
-    }, {
-        test: 'y',
-    }
-    ],
+    pile: [],
     playerHand: [],
     test: 'Hello world!',
 };
@@ -31,6 +26,15 @@ const commits = {
             const draw = await Deck.drawCard(states.deckId);
             states.card = draw.cards[0];
             states.remainingCards = draw.remaining;
+        },
+        async addCardToPile(cardCode = states.card.code) {
+            const updatedPile = await Deck.addCardToPile(states.deckId, cardCode);
+            await this.getPile()
+            return updatedPile;
+        },
+        async getPile() {
+            const res = await Deck.listPile(states.deckId);
+            states.pile = res.piles.pile.cards;
         },
     }
 };

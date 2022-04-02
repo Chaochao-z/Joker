@@ -9,5 +9,19 @@ import Pile from "./components/Pile";
 
 await store.commits.deck.generateDeck();
 
-component(Draw, document.getElementById('draw'));
-component(Pile, document.getElementById('pile'));
+
+function renderDraw() {
+    component(Draw, document.getElementById('draw'));
+}
+renderDraw();
+
+function renderPile() {
+    console.log('test')
+    component(Pile, document.getElementById('pile'));
+}
+renderPile();
+
+export {
+    renderPile,
+    renderDraw,
+}

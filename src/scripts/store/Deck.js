@@ -15,7 +15,21 @@ const Deck = {
         const req = new FetchRequest(`${API_URL}/deck/${deckId}/draw/`);
         const res = await req.fetch();
         return await res.json();
-    }
+    },
+
+    async addCardToPile(deckId, cardCode) {
+        if (!deckId || !cardCode) return;
+        const req = new FetchRequest(`${API_URL}/deck/${deckId}/pile/pile/add/?cards=${cardCode}`);
+        const res = await req.fetch();
+        return await res.json();
+    },
+
+    async listPile(deckId) {
+        if (!deckId) return;
+        const req = new FetchRequest(`${API_URL}/deck/${deckId}/pile/pile/list/`);
+        const res = await req.fetch();
+        return await res.json();
+    },
 }
 
 export default Deck;
