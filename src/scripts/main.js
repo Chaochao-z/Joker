@@ -1,11 +1,11 @@
 import '../css/style.scss'
 
-import game from "./components/Game";
+import {store} from "./store/store";
+
+import component from "./utils/component";
+
 import draw from "./components/Draw";
 
-import {generateRandId} from "./utils/generators";
+await store.commits.deck.generateDeck();
 
-import aComponent from "./utils/component";
-
-// aComponent(game);
-aComponent(draw, document.getElementById('draw'));
+component(draw, document.getElementById('draw'));

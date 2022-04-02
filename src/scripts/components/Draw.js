@@ -1,16 +1,15 @@
+import {store} from "../store/store";
+
 export default {
     render() {
         return `
-            <button id="draw">DRAW</button>
+            <button id="draw-btn">DRAW</button>
         `;
     },
-    data: {
-        cardCount: 0,
-    },
-    mounted(data) {
-        document.getElementById("draw").addEventListener('click', () => {
+    mounted() {
+        document.getElementById("draw-btn").addEventListener('click', async () => {
             console.log('DRAW A CARD')
-            data.cardCount++;
+            await store.commits.deck.drawCard();
         })
     }
 }
