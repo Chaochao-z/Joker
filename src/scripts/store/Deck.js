@@ -5,7 +5,7 @@ import {store, API_URL} from "./store";
 const Deck = {
     async generateDeck(params) {
         const queryParams = objectToQueryString(params);
-        const req = new FetchRequest(`${API_URL}/deck/new/${queryParams}`);
+        const req = new FetchRequest(`${API_URL}/deck/new/shuffle/${queryParams}`);
         const res = await req.fetch();
         return await res.json();
     },

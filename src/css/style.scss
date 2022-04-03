@@ -1,4 +1,14 @@
+@use "sass:math";
+
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pragati+Narrow:wght@400;700&display=swap');
+
+@function posOrNeg() {
+  $nb: math.random(2);
+  @if ($nb == 1) {
+    @return '-';
+  }
+  @return '+';
+}
 
 html {
   scroll-behavior: smooth;
@@ -75,6 +85,40 @@ body {
   }
   &__pile {
     grid-area: pile;
+    &__list {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      &__item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            transform:
+              rotate(#{posOrNeg()}#{math.random(8)}deg)
+              translateX(#{posOrNeg()}#{math.random(8)}px)
+              translateY(#{posOrNeg()}#{math.random(8)}px);
+          }
+        }
+        //&:nth-child(1) {
+        //  transform: rotate(2deg) translateY(2px);
+        //}
+        //&:nth-child(2) {
+        //  transform: rotate(-1deg) translateY(6px);
+        //}
+        //&:nth-child(3) {
+        //  transform: rotate(5deg) translateX(3px);
+        //}
+        //&:nth-child(4) {
+        //  transform: rotate(8deg) translateY(-4px);
+        //}
+        //&:nth-child(5) {
+        //  transform: rotate(-2deg) translateX(-4px) translateY(4px);
+        //}
+      }
+    }
   }
   &__control {
     grid-area: control;
