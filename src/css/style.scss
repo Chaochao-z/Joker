@@ -1,4 +1,14 @@
+@use "sass:math";
+
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pragati+Narrow:wght@400;700&display=swap');
+
+@function posOrNeg() {
+  $nb: math.random(2);
+  @if ($nb == 1) {
+    @return '-';
+  }
+  @return '+';
+}
 
 html {
   scroll-behavior: smooth;
@@ -22,9 +32,11 @@ body {
 
 .app {
   display: grid;
-  grid-template-areas:'. header .' '. main .';
-  grid-auto-columns: 100px 1fr 100px;
-  grid-template-rows: auto;
+  grid-template-areas:
+    '. header .'
+    '. main .';
+  grid-auto-columns: auto 500px auto;
+  grid-template-rows: auto 1fr;
 
   &__header {
     grid-area: header;
@@ -58,5 +70,61 @@ body {
   }
   &__symbols {
     max-width: 50vw;
+  }
+}
+
+.game {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'score score'
+    'deck pile'
+    'control control';
+  &__score {
+    grid-area: score;
+  }
+  &__deck {
+    grid-area: deck;
+  }
+  &__pile {
+    grid-area: pile;
+    &__list {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      &__item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            transform:
+              rotate(#{posOrNeg()}#{math.random(8)}deg)
+              translateX(#{posOrNeg()}#{math.random(8)}px)
+              translateY(#{posOrNeg()}#{math.random(8)}px);
+          }
+        }
+        //&:nth-child(1) {
+        //  transform: rotate(2deg) translateY(2px);
+        //}
+        //&:nth-child(2) {
+        //  transform: rotate(-1deg) translateY(6px);
+        //}
+        //&:nth-child(3) {
+        //  transform: rotate(5deg) translateX(3px);
+        //}
+        //&:nth-child(4) {
+        //  transform: rotate(8deg) translateY(-4px);
+        //}
+        //&:nth-child(5) {
+        //  transform: rotate(-2deg) translateX(-4px) translateY(4px);
+        //}
+      }
+    }
+  }
+  &__control {
+    grid-area: control;
   }
 }

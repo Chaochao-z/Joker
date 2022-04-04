@@ -14,17 +14,19 @@
       <main class="app__main">
         <div id="connectivity"></div>
         <div class="game">
+          <div class="game__score">
+            <div data-component="Score"></div>
+          </div>
           <div class="game__deck">
             <img src="src/assets/Card_back.svg" alt="">
           </div>
           <div class="game__pile">
-            <div class="game__pile__area"></div>
+            <div class="game__pile__area">
+              <div data-component="Pile"></div>
+            </div>
           </div>
           <div class="game__control">
-            <div id="draw"></div>
-          </div>
-          <div id="main">
-            <div id="game"></div>
+            <div data-component="Draw"></div>
           </div>
         </div>
       </main>
