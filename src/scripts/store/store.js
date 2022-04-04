@@ -9,6 +9,7 @@ const states = {
     remainingCards: null,
     pile: [],
     playerHand: [],
+    score: 1,
     test: 'Hello world!',
 };
 
