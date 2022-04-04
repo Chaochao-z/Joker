@@ -6,4 +6,14 @@ function objectToQueryString(object) {
     return `?${queryString}`
 }
 
-export {objectToQueryString};
+function cardValueToNb(cardValue) {
+    const heads = ['JACK', 'QUEEN', 'KING'];
+    const specialCards = [...heads, 'ACE'];
+    if (specialCards.includes(cardValue)) {
+        if (heads.includes(cardValue)) return 10;
+        if (cardValue === 'ACE') return 1;
+    }
+    return parseInt(cardValue);
+}
+
+export {objectToQueryString, cardValueToNb};

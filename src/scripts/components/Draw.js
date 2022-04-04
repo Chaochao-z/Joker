@@ -1,5 +1,6 @@
 import {store} from "../store/store";
-import {PILE} from "./index";
+import {PILE, SCORE} from "./index";
+import {cardValueToNb} from "../utils/conversions";
 
 export default {
     render() {
@@ -11,8 +12,10 @@ export default {
         document.getElementById("draw-btn").addEventListener('click', async () => {
             await store.commits.deck.drawCard();
             await store.commits.deck.addCardToPile();
-            console.log(store.states.pile);
+            const card = store.states.card;
+            await store.commits.score.addScore(cardValueToNb(card.value));
             PILE.render();
+            SCORE.render();
         })
     }
 }

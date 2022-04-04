@@ -9,8 +9,7 @@ const states = {
     remainingCards: null,
     pile: [],
     playerHand: [],
-    score: 1,
-    test: 'Hello world!',
+    score: 0,
 };
 
 const commits = {
@@ -37,7 +36,15 @@ const commits = {
             const res = await Deck.listPile(states.deckId);
             states.pile = res.piles.pile.cards;
         },
-    }
+    },
+    score: {
+        async addScore(amount) {
+            states.score += amount;
+        },
+        async resetScore() {
+            states.score = 0;
+        },
+    },
 };
 
 const store = {states, commits}
