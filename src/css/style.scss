@@ -116,6 +116,14 @@ body {
   }
   &__control {
     grid-area: control;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    .btn {
+      font-size: 2rem;
+      padding: .5rem 1rem;
+    }
   }
 }
 
@@ -126,4 +134,13 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   border-radius: 4px;
+  cursor: pointer;
+  &--red {
+    background: red;
+    color: white;
+  }
+  &--blue {
+    background: dodgerblue;
+    color: white;
+  }
 }

@@ -36,6 +36,14 @@ const commits = {
             const res = await Deck.listPile(states.deckId);
             states.pile = res.piles.pile.cards;
         },
+        async resetDeck(){
+            await commits.deck.generateDeck();
+            states.remainingCards = null;
+            states.card = {};
+        },
+        resetPile(){
+            states.pile = [];
+        },
     },
     score: {
         async addScore(amount) {
@@ -45,6 +53,13 @@ const commits = {
             states.score = 0;
         },
     },
+    game: {
+        async resetGame() {
+            await commits.deck.resetDeck();
+            await commits.pile.resetPile();
+            await commits.score.resetScore();
+        }
+    }
 };
 
 const store = {states, commits}
