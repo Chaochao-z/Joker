@@ -1,6 +1,7 @@
 @use "sass:math";
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pragati+Narrow:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 
 @function posOrNeg() {
   $nb: math.random(2);
@@ -20,7 +21,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #f5f5f5;
-  font-family: 'Pragati Narrow', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 #app {
@@ -40,7 +42,9 @@ body {
 
   &__header {
     grid-area: header;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     &__title {
       font-family: 'Lobster', cursive;
       font-size: 3rem;
@@ -98,6 +102,7 @@ body {
         position: absolute;
         left: 0;
         top: 0;
+        // Randomizer for cards pile
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
             transform:
@@ -106,25 +111,19 @@ body {
               translateY(#{posOrNeg()}#{math.random(8)}px);
           }
         }
-        //&:nth-child(1) {
-        //  transform: rotate(2deg) translateY(2px);
-        //}
-        //&:nth-child(2) {
-        //  transform: rotate(-1deg) translateY(6px);
-        //}
-        //&:nth-child(3) {
-        //  transform: rotate(5deg) translateX(3px);
-        //}
-        //&:nth-child(4) {
-        //  transform: rotate(8deg) translateY(-4px);
-        //}
-        //&:nth-child(5) {
-        //  transform: rotate(-2deg) translateX(-4px) translateY(4px);
-        //}
       }
     }
   }
   &__control {
     grid-area: control;
   }
+}
+
+.btn {
+  padding: .2rem .4rem;
+  border: none;
+  background: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border-radius: 4px;
 }

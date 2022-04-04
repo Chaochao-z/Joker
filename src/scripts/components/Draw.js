@@ -4,7 +4,7 @@ import {PILE} from "./index";
 export default {
     render() {
         return `
-            <button id="draw-btn">DRAW</button>
+            <button id="draw-btn" class="btn">DRAW</button>
         `;
     },
     mounted() {
