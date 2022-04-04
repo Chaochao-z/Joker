@@ -4,9 +4,13 @@ function component(component, bindingEl) {
         bindingEl.innerHTML = component.render();
         component.mounted && component.mounted();
     }
+    const destroy = () => {
+        bindingEl.innerHTML = '';
+    }
     return {
         component,
         bindingEl,
+        destroy,
         render,
     };
 }

@@ -6,6 +6,8 @@ export default {
         if (pile.length) {
             this.data.htmlElements = pile.map((card) => `
             <li class="game__pile__list__item"><img src="${card.image}"/></li>`).join('')
+        } else {
+            this.data.htmlElements = '';
         }
     },
     data: {

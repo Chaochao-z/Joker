@@ -10,6 +10,7 @@ const states = {
     pile: [],
     playerHand: [],
     score: 0,
+    results: {},
 };
 
 const commits = {
@@ -54,9 +55,14 @@ const commits = {
         },
     },
     game: {
+        async defineResults() {
+            states.results = {
+                win: states.score >= 21,
+            }
+        },
         async resetGame() {
             await commits.deck.resetDeck();
-            await commits.pile.resetPile();
+            await commits.deck.resetPile();
             await commits.score.resetScore();
         }
     }

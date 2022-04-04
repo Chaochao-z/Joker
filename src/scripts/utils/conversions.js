@@ -11,7 +11,7 @@ function cardValueToNb(cardValue) {
     const specialCards = [...heads, 'ACE'];
     if (specialCards.includes(cardValue)) {
         if (heads.includes(cardValue)) return 10;
-        if (cardValue === 'ACE') return 1;
+        if (cardValue === 'ACE') return 0;
     }
     return parseInt(cardValue);
 }

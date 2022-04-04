@@ -1,6 +1,6 @@
 import {store} from "../store/store";
 import {cardValueToNb} from "../utils/conversions";
-import {PILE, SCORE} from "./index";
+import {PILE, SCORE, RESULT} from "./index";
 
 export default {
     render() {
@@ -14,9 +14,10 @@ export default {
             await store.commits.deck.addCardToPile();
             const card = store.states.card;
             await store.commits.score.addScore(cardValueToNb(card.value));
+            await store.commits.game.defineResults();
             PILE.render();
             SCORE.render();
-            alert('Score:' + store.states.score)
+            RESULT.render();
             await store.commits.game.resetGame();
         })
     },
