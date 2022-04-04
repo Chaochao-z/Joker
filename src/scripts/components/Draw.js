@@ -1,6 +1,7 @@
 import {store} from "../store/store";
-import {PILE, SCORE} from "./index";
+import {PILE, RESULT, SCORE} from "./index";
 import {cardValueToNb} from "../utils/conversions";
+import score from "./Score";
 
 export default {
     render() {
@@ -16,6 +17,19 @@ export default {
             await store.commits.score.addScore(cardValueToNb(card.value));
             PILE.render();
             SCORE.render();
+            if (store.states.score === 21) {
+                await store.commits.game.defineResults('win');
+                PILE.render();
+                SCORE.render();
+                RESULT.render();
+                await store.commits.game.resetGame();
+            } else if (store.states.score > 21) {
+                await store.commits.game.defineResults('lose');
+                PILE.render();
+                SCORE.render();
+                RESULT.render();
+                await store.commits.game.resetGame();
+            }
         })
     }
 }

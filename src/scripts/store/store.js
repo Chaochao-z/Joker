@@ -55,9 +55,12 @@ const commits = {
         },
     },
     game: {
-        async defineResults() {
+        async defineResults(forcedResult) {
+            let win = states.score > 21;
+            if (forcedResult === 'lose') win = false;
+            if (forcedResult === 'win') win = true;
             states.results = {
-                win: states.score >= 21,
+                win,
             }
         },
         async resetGame() {
